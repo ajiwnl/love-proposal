@@ -76,7 +76,7 @@ function App() {
   };
 
   return (
-    <div className="relative flex items-center w-screen h-screen justify-center bg-linear-to-br from-pink-200 via-rose-300 to-rose-500 text-white text-center overflow-hidden">
+    <div className="relative flex items-center justify-center w-screen h-screen bg-gradient-to-br from-pink-200 via-rose-300 to-rose-500 text-black text-center overflow-hidden">
       {/* Floating hearts animation */}
       {[...Array(10)].map((_, i) => (
         <motion.div
@@ -102,16 +102,19 @@ function App() {
       ))}
 
       {/* Main centered card */}
-      <motion.div
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative flex flex-col items-center justify-center bg-white/20 backdrop-blur-lg p-8 rounded-3xl shadow-2xl text-center"
-      >
+<motion.div
+  initial={{ scale: 0.9, opacity: 0 }}
+  animate={{ scale: 1, opacity: 1 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+  className="relative flex flex-col items-center justify-center 
+             bg-pink-200/90 backdrop-blur-lg p-8 rounded-3xl 
+             shadow-2xl text-center border border-pink-300"
+>
+
         {stage === "confess" && (
           <>
             <h1 className="text-4xl font-extrabold mb-3">Hey 💕</h1>
-            <p className="text-lg text-pink-100 mb-6">
+            <p className="text-lg text-black mb-6">
               Hi, bub can you please enter your name?
             </p>
 
@@ -126,7 +129,7 @@ function App() {
             <button
               onClick={confess}
               disabled={loading}
-              className="bg-pink-600 hover:bg-pink-700 px-6 py-3 rounded-2xl font-semibold shadow-lg transition transform hover:scale-105 disabled:opacity-70"
+              className="bg-pink-600 hover:bg-pink-700 px-6 py-3 rounded-2xl font-semibold shadow-lg transition transform hover:scale-105 disabled:opacity-70 text-black"
             >
               {loading ? "Sending..." : "Confess 💌"}
             </button>
@@ -135,12 +138,12 @@ function App() {
 
         {stage === "proposal" && (
           <>
-            <h1 className="text-3xl font-bold mb-6">{message}</h1>
+            <h1 className="text-3xl font-bold mb-6 text-black">{message}</h1>
             <div className="flex gap-4 justify-center">
               <button
                 onClick={acceptProposal}
                 disabled={loading}
-                className="bg-green-500 hover:bg-green-600 px-6 py-3 rounded-2xl font-semibold shadow-lg transition hover:scale-105 disabled:opacity-70"
+                className="bg-green-500 hover:bg-green-600 px-6 py-3 rounded-2xl font-semibold shadow-lg transition hover:scale-105 disabled:opacity-70 text-black"
               >
                 {loading ? "Processing..." : "Yes 💍"}
               </button>
@@ -148,7 +151,7 @@ function App() {
                 onHoverStart={moveNoButton}
                 animate={{ x: noPos.x, y: noPos.y }}
                 transition={{ type: "spring", stiffness: 200, damping: 10 }}
-                className="bg-gray-400 hover:bg-gray-500 px-6 py-3 rounded-2xl font-semibold shadow-lg transition hover:scale-95"
+                className="bg-gray-400 hover:bg-gray-500 px-6 py-3 rounded-2xl font-semibold shadow-lg transition hover:scale-95 text-black"
               >
                 No 😢
               </motion.button>
@@ -163,14 +166,14 @@ function App() {
             transition={{ duration: 0.8 }}
             className="flex flex-col items-center justify-center text-center"
           >
-            <h2 className="text-3xl font-bold mb-4">{message}</h2>
+            <h2 className="text-3xl font-bold mb-4 text-black">{message}</h2>
             <button
               onClick={() => {
                 setStage("confess");
                 setMessage("");
                 setName("");
               }}
-              className="bg-pink-600 hover:bg-pink-700 px-6 py-2 rounded-2xl font-semibold shadow-lg transition hover:scale-105"
+              className="bg-pink-600 hover:bg-pink-700 px-6 py-2 rounded-2xl font-semibold shadow-lg transition hover:scale-105 text-black"
             >
               💖 Restart
             </button>
@@ -181,14 +184,14 @@ function App() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-6 text-lg text-white font-medium"
+            className="mt-6 text-lg text-black font-medium"
           >
             {message}
           </motion.p>
         )}
       </motion.div>
 
-      <p className="absolute bottom-4 text-pink-100 text-sm">
+      <p className="absolute bottom-4 text-black text-sm">
         💗 Made with love by a shy backend dev 💗
       </p>
     </div>
